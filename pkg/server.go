@@ -26,6 +26,7 @@ func ExecServer(port string) error {
 
 func handler(conn net.Conn) error {
 	defer conn.Close()
+	conn.Write([]byte("HELLO\n"))
 	reader := bufio.NewReader(conn)
 	remoteAddr := conn.RemoteAddr().String()
 	buf := make([]byte, 1024)
